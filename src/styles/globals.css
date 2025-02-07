@@ -4,3 +4,16 @@
 @tailwind components;
 @tailwind utilities;
 
+.toggle-checkbox {
+  transition: right 0.2s ease-in-out;
+  top: 0;
+}
+
+.toggle-checkbox:checked {
+  right: 0;
+}
+
+.toggle-checkbox:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}

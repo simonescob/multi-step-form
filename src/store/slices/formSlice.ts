@@ -7,6 +7,7 @@ interface FormState {
     email?: string;
     phone?: string;
     plan?: string;
+    billing?: string;
     addOns?: {
       service?: boolean;
       storage?: boolean;
@@ -25,6 +26,7 @@ const formSlice = createSlice({
   initialState,
   reducers: {
     updateFormData: (state, action: PayloadAction<Partial<FormState['formData']>>) => {
+      console.log('Updating form data:', action.payload);
       state.formData = { ...state.formData, ...action.payload };
     },
     nextStep: (state) => {

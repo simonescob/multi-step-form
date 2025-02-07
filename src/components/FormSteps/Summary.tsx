@@ -8,13 +8,13 @@ interface SummaryProps {
 
 const Summary: React.FC<SummaryProps> = ({ prevStep }) => {
   const formData = useSelector((state: RootState) => state.form.formData);
-
+  console.log('Form data in Summary:', formData);
   const handleSubmit = () => {
     alert('Form submitted successfully!');
   };
 
   return (
-    <div>
+    <div className="p-4">
       <h2 className="text-2xl font-bold mb-4">Summary</h2>
       <p className="text-gray-600 mb-6">Review your selections before submitting.</p>
 

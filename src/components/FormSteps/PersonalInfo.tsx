@@ -1,4 +1,6 @@
 import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { personalInfoSchema, FormData } from '../../utils/formValidation';
 import { useDispatch } from 'react-redux';
 import { updateFormData } from '../../store/slices/formSlice';
 import Input from '../common/Input';
@@ -9,34 +11,41 @@ interface PersonalInfoProps {
 }
 
 const PersonalInfo: React.FC<PersonalInfoProps> = ({ nextStep }) => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(personalInfoSchema),
+  });
+
   const dispatch = useDispatch();
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: FormData) => {
     dispatch(updateFormData(data));
     nextStep();
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="p-4">
       <h2 className="text-2xl font-bold mb-4">Personal Info</h2>
       <p className="text-gray-600 mb-6">Please provide your name, email address, and phone number.</p>
 
       <Input
         label="Name"
-        {...register('name', { required: 'Name is required' })}
+        {...register('name')}
         error={errors.name}
         placeholder="e.g. Stephen King"
       />
       <Input
         label="Email Address"
-        {...register('email', { required: 'Email is required' })}
+        {...register('email')}
         error={errors.email}
         placeholder="e.g. stephenking@lorem.com"
       />
       <Input
         label="Phone Number"
-        {...register('phone', { required: 'Phone is required' })}
+        {...register('phone')}
         error={errors.phone}
         placeholder="e.g. +1 234 567 890"
       />
