@@ -15,7 +15,7 @@ export default async function handler(
 
       const paymentIntent = await stripe.paymentIntents.create({
         amount: amount*100000, // Convert dollars to cents
-        currency: 'COP',
+        currency: 'USD',
         payment_method_types: ['card'],
         // payment_method: 'card',
         description: 'Subscription payment',

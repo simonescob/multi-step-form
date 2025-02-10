@@ -4,7 +4,6 @@ import { personalInfoSchema, FormData } from '../../utils/formValidation';
 import { useDispatch } from 'react-redux';
 import { updateFormData } from '../../store/slices/formSlice';
 import Input from '../common/Input';
-import Button from '../common/Button';
 
 interface PersonalInfoProps {
   nextStep: () => void;
@@ -50,9 +49,6 @@ const PersonalInfo: React.FC<PersonalInfoProps> = ({ nextStep }) => {
         placeholder="e.g. +1 234 567 890"
       />
 
-      <div className="mt-6 flex justify-end">
-        <Button type="submit">Next Step</Button>
-      </div>
     </form>
   );
 };

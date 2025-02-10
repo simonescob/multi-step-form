@@ -5,6 +5,7 @@ import PaymentModal from '../modals/PaymentModal/PaymentModal';
 import { useEffect, useState } from 'react';
 import { loadStripe, StripeCardElement, StripeCardNumberElement } from '@stripe/stripe-js';
 import { CardElement, useElements, useStripe, Elements } from '@stripe/react-stripe-js';
+import ThankYou from './ThankYou';
 
 interface SummaryProps {
   prevStep: () => void;
@@ -41,6 +42,7 @@ const Summary: React.FC<SummaryProps> = ({ prevStep }) => {
   const elements = useElements();
   const formData = useSelector((state: RootState) => state.form.formData);
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
+  const [paymentSuccessful, setPaymentSuccessful] = useState(false);
 
   console.log('Form data in Summary:', formData);
   const handleSubmit = () => {
@@ -103,7 +105,7 @@ const Summary: React.FC<SummaryProps> = ({ prevStep }) => {
       }
 
       if (paymentIntent.status === 'succeeded') {
-        alert('Payment successful!');
+        setPaymentSuccessful(true);
         setIsPaymentModalOpen(false);
       }
     } catch (error) {
@@ -111,6 +113,10 @@ const Summary: React.FC<SummaryProps> = ({ prevStep }) => {
       alert('Payment failed. Please try again.');
     }
   };
+
+  if (paymentSuccessful) {
+    return <ThankYou />;
+  }
 
   return (
     <div className="">
@@ -136,11 +142,6 @@ const Summary: React.FC<SummaryProps> = ({ prevStep }) => {
           {formData.addOns?.storage && <li>Extra Storage</li>}
           {formData.addOns?.customization && <li>Customization</li>}
         </ul>
-      </div>
-
-      <div className="mt-6 flex justify-between">
-        <Button type="button" onClick={prevStep}>Back</Button>
-        <Button type="button" onClick={handleSubmit}>Submit</Button>
       </div>
 
       <PaymentModal

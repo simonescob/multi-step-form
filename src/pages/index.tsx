@@ -3,6 +3,7 @@ import PersonalInfo from '../components/FormSteps/PersonalInfo';
 import SelectPlan from '../components/FormSteps/SelectPlan';
 import AddOns from '../components/FormSteps/AddOns';
 import Summary from '../components/FormSteps/Summary';
+import Button from '../components/common/Button';
 import SummaryWrapper from '../components/FormSteps/Summary';
 
 const Home = () => {
@@ -16,7 +17,7 @@ const Home = () => {
       <div className="w-[940px] h-[600px] bg-white rounded-lg shadow-lg p-6 max-w-4xl">
         <div className="flex h-full">
           {/* Sidebar */}
-          <div className="w-[275px] h-full bg-purple-sidebar text-white rounded-lg p-6 relative">
+          <div className="w-[275px] h-full bg-purple-sidebar text-white rounded-lg p-6 relative ">
             <img src="/bg-desktop.png" alt="sidebar" className="absolute bottom-0 left-0 w-full rounded-b-lg" />
             <div className="space-y-4">
               <div className={`flex items-center space-x-3 ${currentStep === 1 ? 'font-bold' : ''}`}>
@@ -51,13 +52,25 @@ const Home = () => {
           </div>
 
           {/* Form Content */}
-          <div className="w-3/4  px-24 py-6">
-            {currentStep === 1 && <PersonalInfo nextStep={nextStep} />}
-            {currentStep === 2 && <SelectPlan nextStep={nextStep} prevStep={prevStep} />}
-            {currentStep === 3 && <AddOns nextStep={nextStep} prevStep={prevStep} />}
-            {currentStep === 4 && <SummaryWrapper prevStep={prevStep} />}
+          <div className="w-3/4 px-24 py-6">
+
+            {/* Form Steps */}
+            <div className="h-[92%]">
+              {currentStep === 1 && <PersonalInfo nextStep={nextStep} />}
+              {currentStep === 2 && <SelectPlan nextStep={nextStep} prevStep={prevStep} />}
+              {currentStep === 3 && <AddOns nextStep={nextStep} prevStep={prevStep} />}
+              {currentStep === 4 && <SummaryWrapper prevStep={prevStep} />}
+            </div>
+
+            {/* Navigation Buttons */}
+            <div className="mt-6 flex justify-between">
+              {currentStep > 1 && <Button type="button" onClick={prevStep}>Back</Button>}
+              {currentStep < 4 && <Button type="button" onClick={nextStep}>Next Step</Button>}
+            </div>
+
           </div>
         </div>
+
       </div>
     </div>
   );

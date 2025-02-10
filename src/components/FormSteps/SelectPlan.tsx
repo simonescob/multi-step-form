@@ -3,7 +3,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { selectPlanSchema, FormData } from '../../utils/formValidation';
 import { useDispatch } from 'react-redux';
 import { updateFormData } from '../../store/slices/formSlice';
-import Button from '../common/Button';
 import RadioButton from '../common/RadioButton';
 import { useState } from 'react';
 import Switch from '../common/Switch';
@@ -70,11 +69,6 @@ const SelectPlan: React.FC<SelectPlanProps> = ({ nextStep, prevStep }) => {
       </div>
 
       {errors.plan && <p className="text-red-500 text-sm mt-2">{errors.plan.message}</p>}
-
-      <div className="mt-6 flex justify-between">
-        <Button type="button" onClick={prevStep}>Go Back</Button>
-        <Button type="submit">Next Step</Button>
-      </div>
     </form>
   );
 };

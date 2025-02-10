@@ -3,7 +3,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { addOnsSchema, FormData } from '../../utils/formValidation';
 import { useDispatch } from 'react-redux';
 import { updateFormData } from '../../store/slices/formSlice';
-import Button from '../common/Button';
 import Checkbox from '../common/Checkbox';
 
 interface AddOnsProps {
@@ -11,7 +10,7 @@ interface AddOnsProps {
   prevStep: () => void;
 }
 
-const AddOns: React.FC<AddOnsProps> = ({ nextStep, prevStep }) => {
+const AddOns: React.FC<AddOnsProps> = ({ nextStep }) => {
   const {
     register,
     handleSubmit,
@@ -51,11 +50,6 @@ const AddOns: React.FC<AddOnsProps> = ({ nextStep, prevStep }) => {
           register={register}
           name="addOns.customization"
         />
-      </div>
-
-      <div className="mt-6 flex justify-between">
-        <Button type="button" onClick={prevStep}>Back</Button>
-        <Button type="submit">Next Step</Button>
       </div>
     </form>
   );
