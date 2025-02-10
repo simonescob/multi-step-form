@@ -1,3 +1,4 @@
+import { CardElement } from '@stripe/react-stripe-js';
 import BaseModal from '../BaseModal/BaseModal';
 
 interface PaymentModalProps {
@@ -23,6 +24,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, onPaymentM
         >
           Pay with Stripe
         </button>
+        <CardElement className="border-2 border-orange-300" />
       </div>
     </BaseModal>
   );

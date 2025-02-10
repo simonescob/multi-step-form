@@ -3,6 +3,7 @@ import PersonalInfo from '../components/FormSteps/PersonalInfo';
 import SelectPlan from '../components/FormSteps/SelectPlan';
 import AddOns from '../components/FormSteps/AddOns';
 import Summary from '../components/FormSteps/Summary';
+import SummaryWrapper from '../components/FormSteps/Summary';
 
 const Home = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -54,7 +55,7 @@ const Home = () => {
             {currentStep === 1 && <PersonalInfo nextStep={nextStep} />}
             {currentStep === 2 && <SelectPlan nextStep={nextStep} prevStep={prevStep} />}
             {currentStep === 3 && <AddOns nextStep={nextStep} prevStep={prevStep} />}
-            {currentStep === 4 && <Summary prevStep={prevStep} />}
+            {currentStep === 4 && <SummaryWrapper prevStep={prevStep} />}
           </div>
         </div>
       </div>
