@@ -27,7 +27,7 @@ const PersonalInfo: React.FC<PersonalInfoProps> = ({ nextStep }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="p-4">
+    <form onSubmit={handleSubmit(onSubmit)} className="">
       <h2 className="text-2xl font-bold mb-4">Personal Info</h2>
       <p className="text-gray-600 mb-6">Please provide your name, email address, and phone number.</p>
 

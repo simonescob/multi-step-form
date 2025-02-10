@@ -36,7 +36,7 @@ This is a multi-step form application built with Next.js, React, and Redux Toolk
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/multi-step-form.git
+git clone https://github.com/simonescob/multi-step-form.git
 cd multi-step-form
 ```
 

@@ -12,6 +12,8 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         denim: "#022959",
+        'purple-sidebar': "#483EFF",
+        "blue-light": "#ABBCFF",
       },
     },
   },
